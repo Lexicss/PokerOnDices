@@ -23,7 +23,7 @@
         android:layout_marginRight="17dp"
         android:text="Button" />
 
-    <by.lex.dices.DiceView
+    <by.lex.dices.view.DiceView
         android:id="@+id/first_dice_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/dice1" />
 
-    <by.lex.dices.DiceView
+    <by.lex.dices.view.DiceView
         android:id="@+id/second_dice_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/dice1" />
 
-    <by.lex.dices.DiceView
+    <by.lex.dices.view.DiceView
         android:id="@+id/third_dice_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/dice1" />
 
-    <by.lex.dices.DiceView
+    <by.lex.dices.view.DiceView
         android:id="@+id/fourth_dice_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/dice1" />
 
-    <by.lex.dices.DiceView
+    <by.lex.dices.view.DiceView
         android:id="@+id/fifth_dice_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
