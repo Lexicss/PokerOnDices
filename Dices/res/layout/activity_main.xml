@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="by.lex.dices.MainActivity$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/drop_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView1"
+        android:layout_marginRight="17dp"
+        android:text="Button" />
+
+    <by.lex.dices.DiceView
+        android:id="@+id/first_dice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/drop_btn"
+        android:layout_below="@+id/drop_btn"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/dice1" />
+
+    <by.lex.dices.DiceView
+        android:id="@+id/second_dice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/first_dice_view"
+        android:layout_below="@+id/first_dice_view"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dice1" />
+
+    <by.lex.dices.DiceView
+        android:id="@+id/third_dice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/first_dice_view"
+        android:layout_below="@+id/second_dice_view"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dice1" />
+
+    <by.lex.dices.DiceView
+        android:id="@+id/fourth_dice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/first_dice_view"
+        android:layout_below="@+id/third_dice_view"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dice1" />
+
+    <by.lex.dices.DiceView
+        android:id="@+id/fifth_dice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/first_dice_view"
+        android:layout_below="@+id/fourth_dice_view"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/dice1" />
+
+</RelativeLayout>
