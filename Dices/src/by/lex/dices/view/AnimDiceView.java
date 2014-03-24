@@ -6,12 +6,12 @@ import android.widget.ImageView;
 import by.lex.dices.R;
 import by.lex.dices.entity.Dice;
 
-public class DiceView extends ImageView {
+public class AnimDiceView extends ImageView {
 	private Dice mDice;
 	private boolean mIsDropping;
 	private boolean mIsLock;
 
-	public DiceView(Context context, AttributeSet attrs) {
+	public AnimDiceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 

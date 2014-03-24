@@ -307,7 +307,7 @@ public class ResultManager {
 		mShortStreet = 0;
 		boolean canBeStreet = true;
         //
-		
+
 		for (int n : nums) {
 			canBeStreet &= (n < 3);
 
