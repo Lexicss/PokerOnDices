@@ -1,7 +1,8 @@
 package by.lex.dices.entity;
 
 public class Player {
-	private String mName; //sdsd
+
+	private String mName;
 	
 	private int mSchool1;
 	private int mSchool2;
@@ -25,7 +26,8 @@ public class Player {
 	private int mMizer;
 	private int mSum;
 	private int mFullHouse;
-	private int mPoker;// a
+
+	private int mPoker;
 	
 	public String getName() {
 		return mName;
