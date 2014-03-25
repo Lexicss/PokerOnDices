@@ -20,6 +20,7 @@
 <resources>
     <color name="blue">#0775eb</color>
     <color name="white">#fff</color>
+    <color name="yellow">#ffed00</color>
     <color name="black">#000</color>
     
 </resources>

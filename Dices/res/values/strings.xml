@@ -4,5 +4,9 @@
     <string name="app_name">Dices</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="singleplayer">Одиночная игра</string>
+    <string name="multiplayer">Мультиплеер</string>
+    <string name="rules_game">Правила игры</string>
+    <string name="app_version">Версия: %1$s</string>
 
 </resources>

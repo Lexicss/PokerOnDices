@@ -1,6 +1,7 @@
 package by.lex.dices.view;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import by.lex.dices.R;
@@ -33,26 +34,26 @@ public class DiceView extends ImageView {
 
 		switch (mDice.getValue()) {
 		case 1: 
-			imgId = R.drawable.dice1;
+			imgId = R.drawable.dices_1;
 			break;
 		case 2:
-			imgId = R.drawable.dice2;
+			imgId = R.drawable.dices_2;
 			break;
 		case 3:
-			imgId = R.drawable.dice3;
+			imgId = R.drawable.dices_3;
 			break;
 		case 4:
-			imgId = R.drawable.dice4;
+			imgId = R.drawable.dices_4;
 			break;
 		case 5:
-			imgId = R.drawable.dice5;
+			imgId = R.drawable.dices_5;
 			break;
 		case 6:
-			imgId = R.drawable.dice6;
+			imgId = R.drawable.dices_6;
 			break;
 
 		default:
-			imgId = R.drawable.dice1;
+			imgId = R.drawable.dices_1;
 			break;
 		}
 

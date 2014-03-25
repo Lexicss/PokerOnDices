@@ -18,4 +18,10 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <style name="ButtonMenuNormal" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/btn_menu</item>
+        <item name="android:textColor">@drawable/feedback_text_yellow_black</item>
+        <item name="android:textSize">@dimen/text_btn_menu</item>
+    </style>
+    
 </resources>
