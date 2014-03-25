@@ -22,5 +22,8 @@
     <color name="white">#fff</color>
     <color name="yellow">#ffed00</color>
     <color name="black">#000</color>
+    <color name="grey">#CCCCCC</color>
+    <color name="beige">#f6f3a8</color>
+    
     
 </resources>

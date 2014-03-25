@@ -11,8 +11,10 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int beige=0x7f040005;
         public static final int black=0x7f040003;
         public static final int blue=0x7f040000;
+        public static final int grey=0x7f040004;
         public static final int white=0x7f040001;
         public static final int yellow=0x7f040002;
     }
@@ -35,29 +37,41 @@ public final class R {
         public static final int btn_menu=0x7f020003;
         public static final int btn_menu_normal=0x7f020004;
         public static final int btn_menu_pressed=0x7f020005;
-        public static final int dices_1=0x7f020006;
-        public static final int dices_2=0x7f020007;
-        public static final int dices_3=0x7f020008;
-        public static final int dices_4=0x7f020009;
-        public static final int dices_5=0x7f02000a;
-        public static final int dices_6=0x7f02000b;
-        public static final int feedback_text_yellow_black=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int splash=0x7f02000e;
+        public static final int btn_small=0x7f020006;
+        public static final int btn_small_normal=0x7f020007;
+        public static final int btn_small_pressed=0x7f020008;
+        public static final int dices_1=0x7f020009;
+        public static final int dices_2=0x7f02000a;
+        public static final int dices_3=0x7f02000b;
+        public static final int dices_4=0x7f02000c;
+        public static final int dices_5=0x7f02000d;
+        public static final int dices_6=0x7f02000e;
+        public static final int dot_active=0x7f02000f;
+        public static final int dot_passive=0x7f020010;
+        public static final int feedback_text_yellow_black=0x7f020011;
+        public static final int gradient_separator=0x7f020012;
+        public static final int ic_launcher=0x7f020013;
+        public static final int list_beige=0x7f020014;
+        public static final int splash=0x7f020015;
     }
     public static final class id {
-        public static final int btnMultiplayer=0x7f080009;
-        public static final int btnRules=0x7f08000a;
-        public static final int btnSingle=0x7f080008;
-        public static final int drop_btn=0x7f080001;
-        public static final int fifth_dice_view=0x7f080006;
-        public static final int first_dice_view=0x7f080002;
-        public static final int fourth_dice_view=0x7f080005;
-        public static final int imageView1=0x7f080007;
-        public static final int second_dice_view=0x7f080003;
-        public static final int textView1=0x7f080000;
+        public static final int btnHoldFifth=0x7f080009;
+        public static final int btnHoldFirst=0x7f080001;
+        public static final int btnHoldFourth=0x7f080007;
+        public static final int btnHoldSecond=0x7f080003;
+        public static final int btnHoldThird=0x7f080005;
+        public static final int btnMultiplayer=0x7f08000e;
+        public static final int btnRules=0x7f08000f;
+        public static final int btnSingle=0x7f08000d;
+        public static final int drop_btn=0x7f08000a;
+        public static final int fifth_dice_view=0x7f080008;
+        public static final int first_dice_view=0x7f080000;
+        public static final int fourth_dice_view=0x7f080006;
+        public static final int imageView1=0x7f08000b;
+        public static final int second_dice_view=0x7f080002;
+        public static final int textView1=0x7f08000c;
         public static final int third_dice_view=0x7f080004;
-        public static final int tvAppVersion=0x7f08000b;
+        public static final int tvAppVersion=0x7f080010;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -66,13 +80,14 @@ public final class R {
         public static final int fragment_main=0x7f030003;
     }
     public static final class string {
-        public static final int action_settings=0x7f060002;
+        public static final int action_settings=0x7f060003;
         public static final int app_name=0x7f060000;
-        public static final int app_version=0x7f060006;
-        public static final int hello_world=0x7f060001;
-        public static final int multiplayer=0x7f060004;
-        public static final int rules_game=0x7f060005;
-        public static final int singleplayer=0x7f060003;
+        public static final int app_name_rus=0x7f060001;
+        public static final int app_version=0x7f060007;
+        public static final int hello_world=0x7f060002;
+        public static final int multiplayer=0x7f060005;
+        public static final int rules_game=0x7f060006;
+        public static final int singleplayer=0x7f060004;
     }
     public static final class style {
         /** 
@@ -102,5 +117,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f070001;
         public static final int ButtonMenuNormal=0x7f070002;
+        public static final int ButtonSmallNormal=0x7f070003;
     }
 }
