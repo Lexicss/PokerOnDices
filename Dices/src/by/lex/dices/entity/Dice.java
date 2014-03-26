@@ -10,7 +10,7 @@ public class Dice {
 	
 	public Dice(boolean withDrop) {
 		if (withDrop) {
-			drop();
+			throwIt();
 		} else {
 			mValue = MIN;
 		}
@@ -21,7 +21,7 @@ public class Dice {
 	}
 	
 
-	public int drop() {
+	public int throwIt() {
 	   Random r = new Random();
 	   mValue = r.nextInt(MAX - MIN + 1) + MIN;
 	   

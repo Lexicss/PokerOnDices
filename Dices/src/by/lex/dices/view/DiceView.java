@@ -11,7 +11,7 @@ import by.lex.dices.entity.Dice;
 public class DiceView extends ImageView {
 	private Dice mDice;
 	private boolean mIsDropping;
-	private boolean mIsLock;
+	private boolean mIsHold;
 
 	public DiceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
