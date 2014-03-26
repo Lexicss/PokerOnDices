@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:top="25dp"
+        android:right="4dp">
+        <shape>
+            <solid android:color="#938164" />
+
+            <stroke
+                android:dashGap="4dp"
+                android:dashWidth="4dp"
+                android:width="5dip"
+                android:color="#938164" />
+
+            <corners android:radius="4dip" />
+
+            <padding
+                android:bottom="2dip"
+                android:left="2dip" />
+        </shape>
+    </item>
+    <item android:top="23dp"
+        android:right="2dp">
+        <shape>
+            <solid android:color="#b29c79" />
+
+            <stroke
+                android:dashGap="4dp"
+                android:dashWidth="4dp"
+                android:width="5dip"
+                android:color="#b29c79" />
+
+            <corners android:radius="4dip" />
+
+            <padding
+                android:bottom="2dip"
+                android:left="2dip" />
+        </shape>
+    </item>
+    <item android:top="20dp">
+        <shape>
+            <solid android:color="#d7be96" />
+
+            <stroke
+                android:dashGap="4dp"
+                android:dashWidth="4dp"
+                android:width="5dip"
+                android:color="#d7be96" />
+
+            <corners android:radius="4dip" />
+
+            <padding
+                android:bottom="2dip"
+                android:left="2dip"
+                android:right="2dip"
+                android:top="2dip" />
+        </shape>
+    </item>
+    <item android:top="20dp">
+        <bitmap
+            android:src="@drawable/bg_old_paper"
+            android:tileMode="repeat" />
+    </item>
+    <item
+        android:bottom="10dp"
+        android:right="10dp">
+        <bitmap
+            android:gravity="bottom|right"
+            android:src="@drawable/pic_balloon" />
+    </item>
+    <item android:left="10dp">
+        <bitmap
+            android:gravity="top|left"
+            android:src="@drawable/pic_binder" />
+    </item>
+    <item android:right="15dp">
+        <bitmap
+            android:gravity="top|right"
+            android:src="@drawable/pic_binder" />
+    </item>
+    <item>
+        <bitmap
+            android:gravity="top|center"
+            android:src="@drawable/pic_binder" />
+    </item>
+
+</layer-list>

@@ -14,7 +14,7 @@
         android:text="@string/app_name_rus"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/yellow" />
-    
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
@@ -25,8 +25,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/layerdrawable_notebook"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="60dp" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_world"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin" >
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin" >
 
         <by.lex.dices.view.DiceView
             android:id="@+id/first_dice_view"
@@ -81,30 +105,10 @@
                 android:id="@+id/throwIndicatorView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="6dp"
-                android:layout_gravity="center_vertical" />
-
-            
-
+                android:layout_gravity="center_vertical"
+                android:padding="6dp" >
+            </by.lex.dices.view.ThrowIndicatorView>
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/list_beige"
-        android:orientation="vertical"
-        android:padding="10dp" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_world"
-            android:textColor="@color/black" />
-
     </LinearLayout>
 
 </LinearLayout>
