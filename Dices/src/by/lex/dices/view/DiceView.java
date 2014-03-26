@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 import by.lex.dices.R;
 import by.lex.dices.entity.Dice;
 

@@ -18,6 +18,7 @@ import by.lex.dices.R;
 import by.lex.dices.entity.Dice;
 import by.lex.dices.manager.ResultManager;
 import by.lex.dices.view.DiceView;
+import by.lex.dices.view.ThrowIndicatorView;
 
 public class MainActivity extends Activity implements OnClickListener{
 	public final String TAG = this.getClass().getSimpleName();
@@ -31,6 +32,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	private DiceView mFourthDiceView;
 	private DiceView mFifthDiceView;
 
+	private ThrowIndicatorView throwIndicator;
+	
 	private TreeSet<Integer> dicesSet;
 
 	private List<Dice> mDiceList;
@@ -69,6 +72,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		mThirdDiceView = (DiceView) findViewById(R.id.third_dice_view);
 		mFourthDiceView = (DiceView) findViewById(R.id.fourth_dice_view);
 		mFifthDiceView = (DiceView) findViewById(R.id.fifth_dice_view);
+		
+		throwIndicator = (ThrowIndicatorView)findViewById(R.id.throwIndicatorView);
+		throwIndicator.setThrowNumber(2);
 	}
 
 	private void traceDiceValues() {
@@ -132,6 +138,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		if (v.getId() == R.id.drop_btn) {
 			dropAll();
+			
+			throwIndicator.nextThrow();
 
 			int v1 = mDiceList.get(0).getValue();
 			int v2 = mDiceList.get(1).getValue();
