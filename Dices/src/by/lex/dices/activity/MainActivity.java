@@ -4,47 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
-import by.lex.dices.R;
-import by.lex.dices.R.id;
-import by.lex.dices.R.layout;
-import by.lex.dices.R.menu;
-import by.lex.dices.entity.Dice;
-import by.lex.dices.manager.ResultManager;
-import by.lex.dices.view.DiceView;
-
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import by.lex.dices.R;
+import by.lex.dices.entity.Dice;
+import by.lex.dices.manager.ResultManager;
+import by.lex.dices.view.DiceView;
+import by.lex.dices.view.ThrowIndicatorView;
 
-public class MainActivity extends ActionBarActivity implements OnClickListener{
+public class MainActivity extends Activity implements OnClickListener{
 	public final String TAG = this.getClass().getSimpleName();
-	
+
 	private TextView mText;
-	
+
 	private Button mDropButton;
-	private DiceView mFirstDiceView;
+	private DiceView mfirstDiceView;
 	private DiceView mSecondDiceView;
 	private DiceView mThirdDiceView;
 	private DiceView mFourthDiceView;
 	private DiceView mFifthDiceView;
+
+	private ThrowIndicatorView throwIndicator;
 	
+	private TreeSet<Integer> dicesSet;
+
 	private List<Dice> mDiceList;
-	private List<DiceView> mDiceViewList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		initViews();
 
 		mDiceList = new ArrayList<Dice>();
@@ -53,107 +51,78 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 		mDiceList.add(new Dice());
 		mDiceList.add(new Dice());
 		mDiceList.add(new Dice());
-		
-		mFirstDiceView.setDice(mDiceList.get(0));
+
+		mfirstDiceView.setDice(mDiceList.get(0));
 		mSecondDiceView.setDice(mDiceList.get(1));
 		mThirdDiceView.setDice(mDiceList.get(2));
 		mFourthDiceView.setDice(mDiceList.get(3));
 		mFifthDiceView.setDice(mDiceList.get(4));
-		
-		mDiceViewList = new ArrayList<DiceView>();
-		mDiceViewList.add(mFirstDiceView);
-		mDiceViewList.add(mSecondDiceView);
-		mDiceViewList.add(mThirdDiceView);
-		mDiceViewList.add(mFourthDiceView);
-		mDiceViewList.add(mFifthDiceView);
-		
+
 		dropAll();
 	}
 
 	private void initViews() {
 		mText = (TextView) findViewById(R.id.textView1);
-		
+
 		mDropButton = (Button) findViewById(R.id.drop_btn);
 		mDropButton.setOnClickListener(this);
-		
-		mFirstDiceView = (DiceView) findViewById(R.id.first_dice_view);
+
+		mfirstDiceView = (DiceView) findViewById(R.id.first_dice_view);
 		mSecondDiceView = (DiceView) findViewById(R.id.second_dice_view);
 		mThirdDiceView = (DiceView) findViewById(R.id.third_dice_view);
 		mFourthDiceView = (DiceView) findViewById(R.id.fourth_dice_view);
 		mFifthDiceView = (DiceView) findViewById(R.id.fifth_dice_view);
 		
-		mFirstDiceView.setOnClickListener(this);
-		mSecondDiceView.setOnClickListener(this);
-		mThirdDiceView.setOnClickListener(this);
-		mFourthDiceView.setOnClickListener(this);
-		mFifthDiceView.setOnClickListener(this);
+		throwIndicator = (ThrowIndicatorView)findViewById(R.id.throwIndicatorView);
+		throwIndicator.setThrowNumber(2);
 	}
-	
+
 	private void traceDiceValues() {
 		for (int i = 0; i < mDiceList.size(); i++) {
 			Dice dice = mDiceList.get(i);
 			Log.i(TAG, (i+1) + ". " + dice.getValue());
 		}
 	}
-	
+
 	private void dropAll() {
-//		for (int i = 0; i < mDiceList.size(); i++) {
-//			Dice dice = mDiceList.get(i);
-//			Log.d(TAG, "Drop " + (i+1) + " dice : " + dice.drop());
-//		}
-		
-		for (int i = 0; i < mDiceViewList.size(); i++) {
-			DiceView view = mDiceViewList.get(i);
-			
-			if (!view.isLocked()) {
-				view.getDice().drop();
-				Log.d(TAG, i + ". Dice is Unlock. Did drop");
-			} else {
-				Log.w(TAG, i + ".Dice is Lock");
-			}
+		for (int i = 0; i < mDiceList.size(); i++) {
+			Dice dice = mDiceList.get(i);
+			Log.d(TAG, "Drop " + (i+1) + " dice : " + dice.drop());
 		}
-		
-		mFirstDiceView.refresh();
+
+		mfirstDiceView.refresh();
 		mSecondDiceView.refresh();
 		mThirdDiceView.refresh();
 		mFourthDiceView.refresh();
 		mFifthDiceView.refresh();
 	}
-	
-	private boolean isDiceViewId(int id) {
-		return (id == R.id.first_dice_view ||
-				id == R.id.second_dice_view ||
-				id == R.id.third_dice_view ||
-				id == R.id.fourth_dice_view ||
-				id == R.id.fifth_dice_view);
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
 	public static class PlaceholderFragment extends Fragment {
 
-		public PlaceholderFragment() { //ddf
+		public PlaceholderFragment() {
 		}
 
 		@Override
@@ -169,17 +138,19 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 	public void onClick(View v) {
 		if (v.getId() == R.id.drop_btn) {
 			dropAll();
+			
+			throwIndicator.nextThrow();
 
-			int v1 = mDiceList.get(0).getValue(); //d
+			int v1 = mDiceList.get(0).getValue();
 			int v2 = mDiceList.get(1).getValue();
 			int v3 = mDiceList.get(2).getValue();
 			int v4 = mDiceList.get(3).getValue();
 			int v5 = mDiceList.get(4).getValue();
-			
+
 			int[] values = {v1, v2, v3, v4, v5};
 			ResultManager.getInstance().calculateResult(values);
 			Log.v(TAG,v1 + " " + v2 + " " + v3 + " " + v4 + " " + v5);
-			
+
 			int pair = ResultManager.getInstance().getPair();
 			int doublePair = ResultManager.getInstance().getDoublePair();
 			int set = ResultManager.getInstance().getSet();
@@ -193,7 +164,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 			int sum = ResultManager.getInstance().getSum();
 			int full = ResultManager.getInstance().getFullHouse();
 			int poker = ResultManager.getInstance().getPoker();
-			
+
 			String caption = "";
 			if (pair > 0) {
 				caption += "pair = " + pair;
@@ -234,16 +205,16 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 			if (poker > 0) {
 				caption += "; poker = " + poker;
 			}
-			
+
 			mText.setText(caption);
-			
+
 			Log.d(TAG, "SCHOOL 1 = " + ResultManager.getInstance().getSchool1());
 			Log.d(TAG, "SCHOOL 2 = " + ResultManager.getInstance().getSchool2());
 			Log.d(TAG, "SCHOOL 3 = " + ResultManager.getInstance().getSchool3());
 			Log.d(TAG, "SCHOOL 4 = " + ResultManager.getInstance().getSchool4());
 			Log.d(TAG, "SCHOOL 5 = " + ResultManager.getInstance().getSchool5());
 			Log.d(TAG, "SCHOOL 6 = " + ResultManager.getInstance().getSchool6());
-			
+
 			Log.i(TAG, "Pair: " + ResultManager.getInstance().getPair());
 			Log.i(TAG, "Double Pair: " + ResultManager.getInstance().getDoublePair());
 			Log.i(TAG, "Set: " + ResultManager.getInstance().getSet());
@@ -257,11 +228,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener{
 			Log.i(TAG, "Sum: " + ResultManager.getInstance().getSum());
 			Log.i(TAG, "Full house: " + ResultManager.getInstance().getFullHouse());
 			Log.i(TAG, "Poker: " + ResultManager.getInstance().getPoker());
-			
+
 			Log.i(TAG, " ");
-		} else if (isDiceViewId(v.getId())) {
-			DiceView view = (DiceView)v;
-			view.lockUnlock();
 		}
 	}
 
