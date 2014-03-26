@@ -1,33 +1,34 @@
 package by.lex.dices.entity;
 
 public class Player {
-
+	public final static int UNPLAYED = -1000;
+	
 	private String mName;
 	
-	private int mSchool1;
-	private int mSchool2;
-	private int mSchool3;
-	private int mSchool4;
-	private int mSchool5;
-	private int mSchool6;
+	private int mSchool1 = UNPLAYED;
+	private int mSchool2 = UNPLAYED;
+	private int mSchool3 = UNPLAYED;
+	private int mSchool4 = UNPLAYED;
+	private int mSchool5 = UNPLAYED;
+	private int mSchool6 = UNPLAYED;
 
-	private int mPair;
-	private int mDoublePair;
+	private int mPair = UNPLAYED;
+	private int mDoublePair = UNPLAYED;
 
-	private int mSet;
-	private int mCare;
-	private int mOdds;
-	private int mEvens;
+	private int mSet = UNPLAYED;
+	private int mCare = UNPLAYED;
+	private int mOdds = UNPLAYED;
+	private int mEvens = UNPLAYED;
 
-	private int mLittleStreet;
-	private int mBigStreet;
-	private int mShortStreet;
+	private int mLittleStreet = UNPLAYED;
+	private int mBigStreet = UNPLAYED;
+	private int mShortStreet = UNPLAYED;
 
-	private int mMizer;
-	private int mSum;
-	private int mFullHouse;
+	private int mMizer = UNPLAYED;
+	private int mSum = UNPLAYED;
+	private int mFullHouse = UNPLAYED;
 
-	private int mPoker;
+	private int mPoker = UNPLAYED;
 	
 	public String getName() {
 		return mName;
