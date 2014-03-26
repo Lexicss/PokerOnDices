@@ -28,133 +28,44 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin" >
 
+        <by.lex.dices.view.DiceView
+            android:id="@+id/first_dice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/dices_1" />
+
+        <by.lex.dices.view.DiceView
+            android:id="@+id/second_dice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/dices_2" />
+
+        <by.lex.dices.view.DiceView
+            android:id="@+id/third_dice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/dices_3" />
+
+        <by.lex.dices.view.DiceView
+            android:id="@+id/fourth_dice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/dices_4" />
+
+        <by.lex.dices.view.DiceView
+            android:id="@+id/fifth_dice_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/dices_5" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <by.lex.dices.view.DiceView
-                android:id="@+id/first_dice_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/dices_1" />
-            
-            <Button
-                android:id="@+id/btnHoldFirst"
-                style="@style/ButtonSmallNormal"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal"
-                android:text="hold"
-                android:duplicateParentState="true" 
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <by.lex.dices.view.DiceView
-                android:id="@+id/second_dice_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/dices_2" />
-            
-            <Button
-                android:id="@+id/btnHoldSecond"
-                style="@style/ButtonSmallNormal"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal"
-                android:text="hold"
-                android:duplicateParentState="true" 
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <by.lex.dices.view.DiceView
-                android:id="@+id/third_dice_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/dices_3" />
-            
-            <Button
-                android:id="@+id/btnHoldThird"
-                style="@style/ButtonSmallNormal"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal"
-                android:text="hold"
-                android:duplicateParentState="true" 
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <by.lex.dices.view.DiceView
-                android:id="@+id/fourth_dice_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/dices_4" />
-            
-            <Button
-                android:id="@+id/btnHoldFourth"
-                style="@style/ButtonSmallNormal"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal"
-                android:text="hold"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <by.lex.dices.view.DiceView
-                android:id="@+id/fifth_dice_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/dices_5" />
-            
-            <Button
-                android:id="@+id/btnHoldFifth"
-                style="@style/ButtonSmallNormal"
-                android:layout_width="35dp"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal"
-                android:text="hold"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" >
 
@@ -173,36 +84,7 @@
                 android:padding="6dp"
                 android:layout_gravity="center_vertical" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone" >
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/dot_active" />
-                
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/dot_passive" />
-                
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/dot_passive" />
-
-            </LinearLayout>
+            
 
         </LinearLayout>
 
