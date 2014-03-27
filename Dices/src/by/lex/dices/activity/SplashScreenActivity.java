@@ -12,7 +12,7 @@ import by.lex.dices.R;
 import by.lex.dices.view.GifDecoderView;
 
 public class SplashScreenActivity extends Activity {
-	private static final int SPLASH_TIME = 2 * 1000;
+	private static final int SPLASH_TIME = 1 * 1000;
 	private boolean stopDelay;
 
 	@Override
