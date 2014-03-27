@@ -3,8 +3,11 @@ package by.lex.dices.manager;
 import by.lex.dices.entity.Player;
 
 public class PlayerManager {
+	private final int MAX_LOOP = 19;
+	
 	private Player[] mPlayers;
 	private int mActivePlayerIndex;
+	private int mLoopNumber;
 	
 	private static PlayerManager mInstance;
 	
@@ -17,7 +20,9 @@ public class PlayerManager {
 	}
 	
 	private PlayerManager() {
+		mPlayers = null;
 		mActivePlayerIndex = -1;
+		mLoopNumber = 0;
 	}
 	
 	public Player[] getPlayers() {
@@ -26,6 +31,7 @@ public class PlayerManager {
 	public void setPlayers(Player[] players) {
 		mPlayers = players;
 		mActivePlayerIndex = 0;
+		mLoopNumber = 1;
 	}
 	
 	public Player getActivePlayer() {
@@ -34,6 +40,10 @@ public class PlayerManager {
 		}
 		
 		return mPlayers[mActivePlayerIndex];
+	}
+	
+	public int getLoopNumber() {
+		return mLoopNumber;
 	}
 	
 	public int getActivePlayerIndex() {
@@ -57,8 +67,15 @@ public class PlayerManager {
 	
 	public Player nextPlayer() {
 		mActivePlayerIndex++;
+		
 		if (mActivePlayerIndex >= getPlayersCount()) {
 			mActivePlayerIndex = 0;
+			mLoopNumber++;
+		}
+		
+		// Game over
+		if (mLoopNumber > MAX_LOOP) {
+			return null;
 		}
 		
 		return mPlayers[mActivePlayerIndex];
