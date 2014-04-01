@@ -10,6 +10,7 @@ import android.widget.TextView;
 import by.lex.dices.R;
 import by.lex.dices.manager.ResultManager;
 import by.lex.dices.view.AnimationDiceView;
+import by.lex.dices.view.GameTableView;
 import by.lex.dices.view.AnimationDiceView.onThrowListener;
 import by.lex.dices.view.ThrowIndicatorView;
 
@@ -24,6 +25,8 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 	private AnimationDiceView mThirdDiceView;
 	private AnimationDiceView mFourthDiceView;
 	private AnimationDiceView mFifthDiceView;
+	
+	private GameTableView tableView;
 
 	private ThrowIndicatorView throwIndicator;
 	
@@ -42,6 +45,9 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 
 		mDropButton = (Button) findViewById(R.id.drop_btn);
 		mDropButton.setOnClickListener(this);
+		
+		tableView = (GameTableView) findViewById(R.id.gameTableView);
+		tableView.setPlayers("Andrew", "Alex"); // TODO hardcode
 
 		mFirstDiceView = (AnimationDiceView) findViewById(R.id.first_dice_view);
 		mSecondDiceView = (AnimationDiceView) findViewById(R.id.second_dice_view);
@@ -74,11 +80,11 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 	}
 	
 	private void calculate(){
-		if(mFirstDiceView.isHold())mFirstDiceView.unHold();
-		if(mSecondDiceView.isHold())mSecondDiceView.unHold();
-		if(mThirdDiceView.isHold())mThirdDiceView.unHold();
-		if(mFourthDiceView.isHold())mFourthDiceView.unHold();
-		if(mFifthDiceView.isHold())mFifthDiceView.unHold();
+//		if(mFirstDiceView.isHold())mFirstDiceView.unHold();
+//		if(mSecondDiceView.isHold())mSecondDiceView.unHold();
+//		if(mThirdDiceView.isHold())mThirdDiceView.unHold();
+//		if(mFourthDiceView.isHold())mFourthDiceView.unHold();
+//		if(mFifthDiceView.isHold())mFifthDiceView.unHold();
 		
 		int[] values = {one, two, three, four, five};
 		ResultManager.getInstance().calculateResult(values);
@@ -162,6 +168,28 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		Log.i(TAG, "Poker: " + ResultManager.getInstance().getPoker());
 
 		Log.i(TAG, " ");
+		
+		tableView.getPlayerTable(0).setAces(ResultManager.getInstance().getSchool1());
+		tableView.getPlayerTable(0).setTwos(ResultManager.getInstance().getSchool2());
+		tableView.getPlayerTable(0).setThrees(ResultManager.getInstance().getSchool3());
+		tableView.getPlayerTable(0).setFours(ResultManager.getInstance().getSchool4());
+		tableView.getPlayerTable(0).setFives(ResultManager.getInstance().getSchool5());
+		tableView.getPlayerTable(0).setSix(ResultManager.getInstance().getSchool6());
+		
+		tableView.getPlayerTable(0).setPair(ResultManager.getInstance().getPair());
+		tableView.getPlayerTable(0).setTwoPair(ResultManager.getInstance().getDoublePair());
+		tableView.getPlayerTable(0).setSet(ResultManager.getInstance().getSet());
+		tableView.getPlayerTable(0).setCare(ResultManager.getInstance().getCare());
+		tableView.getPlayerTable(0).setOdds(ResultManager.getInstance().getOdds());
+		tableView.getPlayerTable(0).setEvens(ResultManager.getInstance().getEvens());
+		tableView.getPlayerTable(0).setLittleStreet(ResultManager.getInstance().getLittleStreet());
+		tableView.getPlayerTable(0).setBigStreet(ResultManager.getInstance().getBigStreet()); // TODO getShortStreet
+		tableView.getPlayerTable(0).setMizer(ResultManager.getInstance().getMizer());
+		tableView.getPlayerTable(0).setSum(ResultManager.getInstance().getSum());
+		tableView.getPlayerTable(0).setFullHouse(ResultManager.getInstance().getFullHouse());
+		tableView.getPlayerTable(0).setPoker(ResultManager.getInstance().getPoker());
+		
+		tableView.getPlayerTable(0).setActive(true);
 	}
 
 	@Override

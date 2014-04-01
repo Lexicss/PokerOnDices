@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.AbsSeekBar;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import by.lex.dices.R;

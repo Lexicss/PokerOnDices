@@ -10,5 +10,30 @@
     <string name="rules_game">Rules</string>
     <string name="app_version">Version: %1$s</string>
     <string name="throw_dices">Throw</string>
+    
+    <string name="table_school">SCHOOL</string>
+    <string name="table_aces">ACES</string>
+    <string name="table_twos">TWOS</string>
+    <string name="table_threes">THREES</string>
+    <string name="table_fours">FOURS</string>
+    <string name="table_fives">FIVES</string>
+    <string name="table_sixes">SIXES</string>
+    
+    <string name="table_games">GAMES</string>
+    <string name="table_pair">PAIR</string>
+    <string name="table_two_pair">TWO PAIR</string>
+    <string name="table_set">SET</string>
+    <string name="table_care">CARE</string>
+    <string name="table_evens">EVENS</string>
+    <string name="table_odds">ODDS</string>    
+    <string name="table_little_street">LITTLE STREET</string>
+    <string name="table_big_street">BIG STREET</string>
+    <string name="table_mizer">Mizer</string>
+    <string name="table_sum">SUM</string>
+    <string name="table_full_house">FULL HOUSE</string>
+    <string name="table_chance">CHANCE</string>
+    <string name="table_pocker">POCKER</string>
+    
+    <string name="table_total">TOTAL</string>
 
 </resources>

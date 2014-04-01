@@ -1,0 +1,345 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/menu_items_layout"
+            android:background="@color/beige"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text" 
+                android:id="@+id/tvName"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llAces"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvAces"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTwos"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvTwos"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llThrees"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvThrees"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFours"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvFours"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFives"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvFives"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSix"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvSix"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/menu_items_layout"
+            android:background="@color/beige"
+            android:orientation="vertical" >
+
+            <TextView style="@style/menu_items_text" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPair"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvPair"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTwoPair"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvTwoPair"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSet"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvSet"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llCare"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvCare"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEvens"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvEvens"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llOdds"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvOdds"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLittleStreet"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvLittleStreet"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llBigStreet"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvBigStreet"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llMizer"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvMizer"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llSum"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvSum"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFullHouse"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvFullHouse"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llChance"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvChance"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPoker"
+            style="@style/menu_items_layout"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvPoker"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/menu_items_layout"
+            android:background="@color/beige"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/menu_items_text"
+                android:id="@+id/tvTotal"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+</LinearLayout>

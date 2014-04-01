@@ -1,0 +1,368 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    style="@style/menu_items_layout"
+                    android:background="@color/beige"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_school" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAces"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_aces" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTwos"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_twos" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llThrees"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_threes" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFours"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_fours" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFives"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_fives" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSix"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_sixes" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/menu_items_layout"
+                    android:background="@color/beige"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_games" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPair"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_pair" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTwoPair"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_two_pair" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSet"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_set" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llCare"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_care" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEvens"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_evens" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llOdds"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_odds" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llLittleStreet"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_little_street" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llBigStreet"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_big_street" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llMizer"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_mizer" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llSum"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_sum" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFullHouse"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_full_house" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llChance"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_chance" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llPoker"
+                    style="@style/menu_items_layout"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_pocker" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/menu_items_layout"
+                    android:background="@color/beige"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        style="@style/menu_items_text"
+                        android:text="@string/table_total" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/playersContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+            </HorizontalScrollView>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</merge>
