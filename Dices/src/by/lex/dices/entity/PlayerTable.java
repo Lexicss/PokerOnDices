@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import by.lex.dices.R;
+import by.lex.dices.interfaces.ChoiceListener;
 
 public class PlayerTable implements OnClickListener{
 	
@@ -21,7 +22,10 @@ public class PlayerTable implements OnClickListener{
 	
 	private boolean isActive;
 	private int aces, twos, threes, fours, fives, six, pair, twoPair, set, care, evens, 
-	odds, littleStreet, bigStreet, mizer, sum, fullHouse, chance, poker, total;	
+	odds, littleStreet, bigStreet, mizer, sum, fullHouse, chance, poker, total;
+	
+	private int mPlayerIndex;
+	private ChoiceListener mChoiceListener;
 	
 	public int getAces() {
 		return aces;
@@ -263,6 +267,14 @@ public class PlayerTable implements OnClickListener{
 		tvName.setText(name);
 	}	
 
+	public void setPlayerIndex(int index) {
+		mPlayerIndex = index;
+	}
+	
+	public void setChoiceListener(ChoiceListener listener) {
+		mChoiceListener = listener;
+	}
+	
 	private void updateView() {
 		if(isActive){
 			String stAces = tvAces.getText().toString();
@@ -420,11 +432,18 @@ public class PlayerTable implements OnClickListener{
 		switch (v.getId()) {
 		case R.id.llAces:
 			Toast.makeText(mContext, "Еденицы", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(1, mPlayerIndex);
 //			tvAces.set
 			break;
 		case R.id.llTwos:
 			Toast.makeText(mContext, "Двойки", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(2, mPlayerIndex);
 			break;
+		case R.id.llThrees:
+			Toast.makeText(mContext, "threes", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(3, mPlayerIndex);
+			break;
+			
 		}
 	}	
 }

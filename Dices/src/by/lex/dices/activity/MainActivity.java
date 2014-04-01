@@ -8,13 +8,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import by.lex.dices.R;
+import by.lex.dices.entity.Player;
+import by.lex.dices.interfaces.ChangePlayerListener;
+import by.lex.dices.manager.PlayerManager;
 import by.lex.dices.manager.ResultManager;
 import by.lex.dices.view.AnimationDiceView;
 import by.lex.dices.view.GameTableView;
 import by.lex.dices.view.AnimationDiceView.onThrowListener;
 import by.lex.dices.view.ThrowIndicatorView;
 
-public class MainActivity extends Activity implements OnClickListener, onThrowListener{
+public class MainActivity extends Activity implements OnClickListener, onThrowListener, ChangePlayerListener{
 	public final String TAG = this.getClass().getSimpleName();
 
 	private TextView mText;
@@ -26,9 +29,11 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 	private AnimationDiceView mFourthDiceView;
 	private AnimationDiceView mFifthDiceView;
 	
-	private GameTableView tableView;
+	private GameTableView gameView;
 
 	private ThrowIndicatorView throwIndicator;
+	private PlayerManager mManager;
+	private ResultManager mResult;
 	
 	private int one, two, three, four, five = -1; // number dices
 
@@ -37,7 +42,11 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		mManager = PlayerManager.getInstance();
+		mResult = ResultManager.getInstance();
+		
 		initViews();
+		testGame();
 	}
 
 	private void initViews() {
@@ -46,8 +55,9 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		mDropButton = (Button) findViewById(R.id.drop_btn);
 		mDropButton.setOnClickListener(this);
 		
-		tableView = (GameTableView) findViewById(R.id.gameTableView);
-		tableView.setPlayers("Andrew", "Alex"); // TODO hardcode
+		gameView = (GameTableView) findViewById(R.id.gameTableView);
+		gameView.setChangePlayerListener(this);
+		//tableView.setPlayers("Andrew", "Alex"); // TODO hardcode
 
 		mFirstDiceView = (AnimationDiceView) findViewById(R.id.first_dice_view);
 		mSecondDiceView = (AnimationDiceView) findViewById(R.id.second_dice_view);
@@ -63,6 +73,10 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		
 		throwIndicator = (ThrowIndicatorView)findViewById(R.id.throwIndicatorView);
 		throwIndicator.setThrowNumber(0);
+		
+		boolean isGameActive = PlayerManager.getInstance().isStarted();
+		mDropButton.setEnabled(isGameActive);
+		
 	}
 
 	private void dropAll() {
@@ -169,27 +183,46 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 
 		Log.i(TAG, " ");
 		
-		tableView.getPlayerTable(0).setAces(ResultManager.getInstance().getSchool1());
-		tableView.getPlayerTable(0).setTwos(ResultManager.getInstance().getSchool2());
-		tableView.getPlayerTable(0).setThrees(ResultManager.getInstance().getSchool3());
-		tableView.getPlayerTable(0).setFours(ResultManager.getInstance().getSchool4());
-		tableView.getPlayerTable(0).setFives(ResultManager.getInstance().getSchool5());
-		tableView.getPlayerTable(0).setSix(ResultManager.getInstance().getSchool6());
+		int index = mManager.getActivePlayerIndex();
+		gameView.getPlayerTable(index).setAces(ResultManager.getInstance().getSchool1());
+		gameView.getPlayerTable(index).setTwos(ResultManager.getInstance().getSchool2());
+		gameView.getPlayerTable(index).setThrees(ResultManager.getInstance().getSchool3());
+		gameView.getPlayerTable(index).setFours(ResultManager.getInstance().getSchool4());
+		gameView.getPlayerTable(index).setFives(ResultManager.getInstance().getSchool5());
+		gameView.getPlayerTable(index).setSix(ResultManager.getInstance().getSchool6());
 		
-		tableView.getPlayerTable(0).setPair(ResultManager.getInstance().getPair());
-		tableView.getPlayerTable(0).setTwoPair(ResultManager.getInstance().getDoublePair());
-		tableView.getPlayerTable(0).setSet(ResultManager.getInstance().getSet());
-		tableView.getPlayerTable(0).setCare(ResultManager.getInstance().getCare());
-		tableView.getPlayerTable(0).setOdds(ResultManager.getInstance().getOdds());
-		tableView.getPlayerTable(0).setEvens(ResultManager.getInstance().getEvens());
-		tableView.getPlayerTable(0).setLittleStreet(ResultManager.getInstance().getLittleStreet());
-		tableView.getPlayerTable(0).setBigStreet(ResultManager.getInstance().getBigStreet()); // TODO getShortStreet
-		tableView.getPlayerTable(0).setMizer(ResultManager.getInstance().getMizer());
-		tableView.getPlayerTable(0).setSum(ResultManager.getInstance().getSum());
-		tableView.getPlayerTable(0).setFullHouse(ResultManager.getInstance().getFullHouse());
-		tableView.getPlayerTable(0).setPoker(ResultManager.getInstance().getPoker());
+		gameView.getPlayerTable(index).setPair(ResultManager.getInstance().getPair());
+		gameView.getPlayerTable(index).setTwoPair(ResultManager.getInstance().getDoublePair());
+		gameView.getPlayerTable(index).setSet(ResultManager.getInstance().getSet());
+		gameView.getPlayerTable(index).setCare(ResultManager.getInstance().getCare());
+		gameView.getPlayerTable(index).setOdds(ResultManager.getInstance().getOdds());
+		gameView.getPlayerTable(index).setEvens(ResultManager.getInstance().getEvens());
+		gameView.getPlayerTable(index).setLittleStreet(ResultManager.getInstance().getLittleStreet());
+		gameView.getPlayerTable(index).setBigStreet(ResultManager.getInstance().getBigStreet()); // TODO getShortStreet
+		gameView.getPlayerTable(index).setMizer(ResultManager.getInstance().getMizer());
+		gameView.getPlayerTable(index).setSum(ResultManager.getInstance().getSum());
+		gameView.getPlayerTable(index).setFullHouse(ResultManager.getInstance().getFullHouse());
+		gameView.getPlayerTable(index).setPoker(ResultManager.getInstance().getPoker());
 		
-		tableView.getPlayerTable(0).setActive(true);
+		gameView.getPlayerTable(index).setActive(true);
+	}
+	
+	private void testGame() {
+		Player player1 = new Player();
+		player1.setName("Andrew1");
+		
+		Player player2 = new Player();
+		player2.setName("Alex2");
+		
+		Player[] players = {player1, player2};
+		mManager.setPlayers(players);
+		boolean wellStarted = mManager.start();
+		
+		mDropButton.setEnabled(wellStarted);
+		
+		if (wellStarted) {
+			gameView.setManager(mManager);
+		}
 	}
 
 	@Override
@@ -225,6 +258,12 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		if(one != -1 && two != -1 && three != -1 && four != -1 && five != -1){
 			calculate();
 		}
+	}
+
+	@Override
+	public void onNextPlayer(int playerIndex) {
+		throwIndicator.setThrowNumber(0);
+		
 	}
 
 }

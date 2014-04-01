@@ -8,6 +8,7 @@ public class PlayerManager {
 	private Player[] mPlayers;
 	private int mActivePlayerIndex;
 	private int mLoopNumber;
+	private boolean mIsStarted;
 	
 	private static PlayerManager mInstance;
 	
@@ -23,6 +24,7 @@ public class PlayerManager {
 		mPlayers = null;
 		mActivePlayerIndex = -1;
 		mLoopNumber = 0;
+		mIsStarted = false;
 	}
 	
 	public Player[] getPlayers() {
@@ -75,10 +77,33 @@ public class PlayerManager {
 		
 		// Game over
 		if (mLoopNumber > MAX_LOOP) {
+			mIsStarted = false;
 			return null;
 		}
 		
 		return mPlayers[mActivePlayerIndex];
+	}
+	
+	public boolean isStarted() {
+		return mIsStarted;
+	}
+	
+	public boolean start() {
+		if (mIsStarted) {
+			return false;
+		}
+		
+		if (mPlayers == null || mPlayers.length == 0) {
+			return false;
+		}
+		
+		mIsStarted = true;
+		
+		return true;
+	}
+	
+	public void stop() {
+		mIsStarted = false;
 	}
 
 }
