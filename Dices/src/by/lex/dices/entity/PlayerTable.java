@@ -23,7 +23,7 @@ public class PlayerTable implements OnClickListener{
 	private LinearLayout llAces, llTwos, llThrees, llFours, llFives, llSix, llPair, llTwoPair, llSet, llCare, 
 						llEvens, llOdds, llLittleStreet, llBigStreet, llMizer, llSum, llFullHouse, llChance, llPoker;
 	private TextView tvName, tvAces, tvTwos, tvThrees, tvFours, tvFives, tvSix, tvPair, tvTwoPair, tvSet, tvCare, tvEvens, 
-						tvOdds, tvLittleStreet, tvBigStreet, tvMizer, tvSum, tvFullHouse, tvChance, tvPoker, tvTotal;
+						tvOdds, tvLittleStreet, tvBigStreet, tvMizer, tvSum, tvFullHouse, tvChance, tvPoker, tvTotal, tvSchoolResult;
 	
 	private boolean isActive;
 	private int aces = UNPLAYED, twos = UNPLAYED, threes = UNPLAYED, fours = UNPLAYED, fives = UNPLAYED, six = UNPLAYED,
@@ -229,6 +229,8 @@ public class PlayerTable implements OnClickListener{
 		tvFours = (TextView)tablePlayer.findViewById(R.id.tvFours);
 		tvFives = (TextView)tablePlayer.findViewById(R.id.tvFives);
 		tvSix = (TextView)tablePlayer.findViewById(R.id.tvSix);
+		tvSchoolResult = (TextView)tablePlayer.findViewById(R.id.tvSchoolResult);
+		
 		tvPair = (TextView)tablePlayer.findViewById(R.id.tvPair);
 		tvTwoPair = (TextView)tablePlayer.findViewById(R.id.tvTwoPair);
 		tvSet = (TextView)tablePlayer.findViewById(R.id.tvSet);
@@ -401,6 +403,8 @@ public class PlayerTable implements OnClickListener{
 			tvPoker.setText((poker == UNPLAYED) ? "" : String.valueOf(poker));
 		}
 		
+		tvSchoolResult.setText(String.valueOf(calculateSchoolResult()));
+		
 		changeDrawable(tvAces, llAces, aces);
 		changeDrawable(tvTwos, llTwos, twos);
 		changeDrawable(tvThrees, llThrees, threes);
@@ -507,6 +511,29 @@ public class PlayerTable implements OnClickListener{
 		
 		ChanceGame game = new ChanceGame(score, name);
 		return game;
+	}
+	
+	private int calculateSchoolResult() {
+		int[] schools = new int[6];
+		int sum = 0;
+		
+		schools[0] = aces;
+		schools[1] = twos;
+		schools[2] = threes;
+		schools[3] = fours;
+		schools[4] = fives;
+		schools[5] = six;
+		
+		for (int i = 0; i < schools.length; i++) {
+			int s = schools[i];
+			
+			if (s == UNPLAYED) {
+				s = 0;
+			}
+			sum += s;
+		}
+		
+		return sum;
 	}
 	
 	// listeners

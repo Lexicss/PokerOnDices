@@ -118,8 +118,8 @@
             android:background="@color/beige"
             android:orientation="vertical" >
 
-            <TextView style="@style/menu_items_text" />
-
+            <TextView style="@style/menu_items_text_res"
+                android:id="@+id/tvSchoolResult"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"

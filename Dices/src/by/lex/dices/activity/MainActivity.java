@@ -247,7 +247,7 @@ public class MainActivity extends Activity implements OnClickListener, onThrowLi
 		
 		PlayerTable p1 = new PlayerTable(this, "Plr1");
 		PlayerTable p2 = new PlayerTable(this, "Plr2");
-		PlayerTable[] players = {p1,p2};
+		PlayerTable[] players = {p1, p2};
 		
 		mPlayerManager.setPlayers(players);
 		boolean wellStarted = mPlayerManager.start();

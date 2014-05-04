@@ -1,5 +1,9 @@
 package by.lex.dices.manager;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class ResultManager {
 	private static ResultManager mInstance;
 
@@ -292,46 +296,51 @@ public class ResultManager {
 		}
 	}
 
-	private void calcStreet(int[] nums) {
-		mLittleStreet = 0;
-		mBigStreet = 0;
-		boolean isStreet = true;
-
-		for (int n : nums) {
-			isStreet &= (n <= 1);
-
-			if (!isStreet) {
-				return;
+	private boolean isStreet(int[] values, int level) {
+		int locValues[] = values;
+		Arrays.sort(locValues);
+		
+		int prev = locValues[0];
+		int progress = 0; // progress to signal that can be a street
+		int warns = 0; // warnins to signal that it can not be street
+		int warnsMax = locValues.length - level;
+		
+		for (int i = 1; i < locValues.length; i++) {
+			if (locValues[i] - prev == 1) {
+				progress++;
+				if (progress >= level - 1) {
+					return true;
+				}
+			} else if (locValues[i] == prev) {
+				warns++;
+			} else {
+				warns++;
+				progress = 0;
 			}
+			
+			if (warns > warnsMax) {
+				break;
+			}
+			
+			prev = locValues[i];
 		}
-
-		if (nums[5] > 0) {
-			mBigStreet = 20;
-		} else {
-			mLittleStreet = 15;
-		}
+		
+		return false;
 	}
 
-	private void calcShortStreet(int[] nums) {
-		mShortStreet = 0;
-		boolean canBeStreet = true;
-        //
-
-		for (int n : nums) {
-			canBeStreet &= (n < 3);
-
-			if (!canBeStreet) {
-				return;
-			}
+	private void calcLittleStreet(int values[]) {
+		if (isStreet(values, 4)) {
+			mLittleStreet = calcSum(gatherNumsFromDices(values));
+		} else {
+			mLittleStreet = 0;
 		}
-
-		boolean isLeftPart = (nums[0] > 0 || nums[1] > 0);//
-		boolean isCenterPart = (nums[2] > 0 && nums[3] > 0);
-		boolean isRightPart = (nums[4] > 0 || nums[5] > 0);//
-		boolean isTwoOrFive = (nums[1] > 0 || nums[4] > 0);
-
-		if (isLeftPart && isCenterPart && isRightPart && isTwoOrFive) {
-			mShortStreet = 20;
+	}
+	
+	private void calcBigStreet(int values[]) {
+		if (isStreet(values, 5)) {
+			mBigStreet = calcSum(gatherNumsFromDices(values));
+		} else {
+			mBigStreet = 0;
 		}
 	}
 
@@ -396,8 +405,8 @@ public class ResultManager {
 		calcOdds(nums);
 		calcEvens(nums);
 
-		calcStreet(nums);
-		calcShortStreet(nums);
+		calcLittleStreet(values);//calcStreet(nums);
+		calcBigStreet(values);//calcShortStreet(nums);
 		calcMizer(nums);
 		calcFullSum(nums);
 		calcFullHouse(nums);
