@@ -404,32 +404,38 @@ public class PlayerTable implements OnClickListener{
 		}
 		
 		tvSchoolResult.setText(String.valueOf(calculateSchoolResult()));
+		tvTotal.setText(String.valueOf(calculateTotalResult()));
 		
-		changeDrawable(tvAces, llAces, aces);
-		changeDrawable(tvTwos, llTwos, twos);
-		changeDrawable(tvThrees, llThrees, threes);
-		changeDrawable(tvFours, llFours, fours);
-		changeDrawable(tvFives, llFives, fives);
-		changeDrawable(tvSix, llSix, six);
-		changeDrawable(tvPair, llPair, pair);
-		changeDrawable(tvTwoPair, llTwoPair, twoPair);
-		changeDrawable(tvSet, llSet, set);
-		changeDrawable(tvCare, llCare, care);
-		changeDrawable(tvEvens, llEvens, evens);
-		changeDrawable(tvOdds, llOdds, odds);
-		changeDrawable(tvLittleStreet, llLittleStreet, littleStreet);
-		changeDrawable(tvBigStreet, llBigStreet, bigStreet);
-		changeDrawable(tvMizer, llMizer, mizer);
-		changeDrawable(tvSum, llSum, sum);
-		changeDrawable(tvFullHouse, llFullHouse, fullHouse);
-		changeDrawable(tvChance, llChance, chance);
-		changeDrawable(tvPoker, llPoker, poker);
+		changeDrawable(tvAces, llAces, aces, result.getSchool1());
+		changeDrawable(tvTwos, llTwos, twos, result.getSchool2());
+		changeDrawable(tvThrees, llThrees, threes, result.getSchool3());
+		changeDrawable(tvFours, llFours, fours, result.getSchool4());
+		changeDrawable(tvFives, llFives, fives, result.getSchool5());
+		changeDrawable(tvSix, llSix, six, result.getSchool6());
+		changeDrawable(tvPair, llPair, pair, result.getPair());
+		changeDrawable(tvTwoPair, llTwoPair, twoPair, result.getDoublePair());
+		changeDrawable(tvSet, llSet, set, result.getSet());
+		changeDrawable(tvCare, llCare, care, result.getCare());
+		changeDrawable(tvEvens, llEvens, evens, result.getEvens());
+		changeDrawable(tvOdds, llOdds, odds, result.getOdds());
+		changeDrawable(tvLittleStreet, llLittleStreet, littleStreet, getLittleStreet());
+		changeDrawable(tvBigStreet, llBigStreet, bigStreet, result.getBigStreet());
+		changeDrawable(tvMizer, llMizer, mizer, result.getMizer());
+		changeDrawable(tvSum, llSum, sum, result.getSum());
+		changeDrawable(tvFullHouse, llFullHouse, fullHouse, result.getFullHouse());
+		changeDrawable(tvChance, llChance, chance, result.getChance());
+		changeDrawable(tvPoker, llPoker, poker, result.getPoker());
 	}
 	
-	private void changeDrawable(TextView text, LinearLayout layout, int score){
+	private void changeDrawable(TextView text, LinearLayout layout, int score, int hintScore){
 		if(isActive){
 			if(score == UNPLAYED) {
-				layout.setBackgroundResource(R.drawable.feedback_red_cell);  // hint will be shown (to click)
+				if (hintScore > 0) {
+					layout.setBackgroundResource(R.drawable.feedback_green_cell);  // hint will be shown (to click)
+				} else {
+					layout.setBackgroundResource(R.drawable.feedback_red_cell);  // hint will be shown (to click)
+				}
+
 				text.setTextColor(mContext.getResources().getColor(R.color.beige));
 			} else {
 				layout.setBackgroundResource(R.color.beige);  // no hint
@@ -534,6 +540,64 @@ public class PlayerTable implements OnClickListener{
 		}
 		
 		return sum;
+	}
+	
+	private int calculateTotalResult() {
+		int sum = 0;
+		
+		if (pair > 0) {
+			sum += pair;
+		}
+		
+		if (twoPair > 0) {
+			sum += twoPair;
+		}
+		
+		if (set > 0) {
+			sum += set;
+		}
+		
+		if (care > 0) {
+			sum += care;
+		}
+		
+		if (evens > 0) {
+			sum += evens;
+		}
+		
+		if (odds > 0) {
+			sum += odds;
+		}
+		
+		if (littleStreet > 0) {
+			sum += littleStreet;
+		}
+		
+		if (bigStreet > 0) {
+			sum += bigStreet;
+		}
+		
+		if (mizer > 0) {
+			sum += mizer;
+		}
+		
+		if (this.sum > 0) {
+			sum += this.sum;
+		}
+		
+		if (fullHouse > 0) {
+			sum += fullHouse;
+		}
+		
+		if (chance > 0) {
+			sum += chance;
+		}
+		
+		if (poker > 0) {
+			sum += poker;
+		}
+		
+		return calculateSchoolResult() + sum;
 	}
 	
 	// listeners
