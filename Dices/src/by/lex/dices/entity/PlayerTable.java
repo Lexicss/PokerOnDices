@@ -1,6 +1,7 @@
 package by.lex.dices.entity;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,8 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import by.lex.dices.R;
 import by.lex.dices.interfaces.ChoiceListener;
+import by.lex.dices.manager.ResultManager;
+
 
 public class PlayerTable implements OnClickListener{
+	private final String TAG = this.getClass().getSimpleName();
+	public final static int UNPLAYED = -1000;
 	
 	private Context mContext;
 
@@ -21,11 +26,16 @@ public class PlayerTable implements OnClickListener{
 						tvOdds, tvLittleStreet, tvBigStreet, tvMizer, tvSum, tvFullHouse, tvChance, tvPoker, tvTotal;
 	
 	private boolean isActive;
-	private int aces, twos, threes, fours, fives, six, pair, twoPair, set, care, evens, 
-	odds, littleStreet, bigStreet, mizer, sum, fullHouse, chance, poker, total;
+	private int aces = UNPLAYED, twos = UNPLAYED, threes = UNPLAYED, fours = UNPLAYED, fives = UNPLAYED, six = UNPLAYED,
+			pair = UNPLAYED, twoPair = UNPLAYED, set = UNPLAYED, care = UNPLAYED, evens = UNPLAYED, 
+			odds = UNPLAYED, littleStreet = UNPLAYED, bigStreet = UNPLAYED, mizer = UNPLAYED, sum = UNPLAYED,
+			fullHouse = UNPLAYED, chance = UNPLAYED, poker = UNPLAYED, total = 0;
 	
+	private String mName;
 	private int mPlayerIndex;
 	private ChoiceListener mChoiceListener;
+	
+	// Properties
 	
 	public int getAces() {
 		return aces;
@@ -191,13 +201,23 @@ public class PlayerTable implements OnClickListener{
 		return tablePlayer;
 	}
 	
-	public void setActive(boolean state){
+	public void setActive(boolean state, ResultManager result, boolean firstTry){
 		isActive = state;
-		updateView();
+		updateView(result, firstTry);
 	}	
 
+	public String getName() {
+		return mName;
+	}
+	
+	public void setPlayerIndex(int index) {
+		mPlayerIndex = index;
+	}
+	
+	
 	public PlayerTable(Context context, String name) {
 		mContext = context;
+		mName = name;
 		
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		tablePlayer = inflater.inflate(R.layout.game_table_player, null);		
@@ -266,166 +286,230 @@ public class PlayerTable implements OnClickListener{
 		
 		tvName.setText(name);
 	}	
-
-	public void setPlayerIndex(int index) {
-		mPlayerIndex = index;
-	}
 	
 	public void setChoiceListener(ChoiceListener listener) {
 		mChoiceListener = listener;
 	}
 	
-	private void updateView() {
+	private void updateView(ResultManager result, boolean firstTry) {
+		int bonus = (firstTry ? 2 : 1);
+		
 		if(isActive){
-			String stAces = tvAces.getText().toString();
-			if(stAces.isEmpty() || stAces.contains("+")) tvAces.setText("+" + aces);			
+			if (aces == UNPLAYED) {
+				tvAces.setText(String.valueOf(result.getSchool1()));
+			}
 			
-			String stTwos = tvTwos.getText().toString();
-			if(stTwos.isEmpty() || stTwos.contains("+")) tvTwos.setText("+" + twos);
+			if (twos == UNPLAYED) {
+				tvTwos.setText(String.valueOf(result.getSchool2()));
+			}
 			
-			String stThrees = tvThrees.getText().toString();
-			if(stThrees.isEmpty() || stThrees.contains("+")) tvThrees.setText("+" + threes);
+			if (threes == UNPLAYED) {
+				tvThrees.setText(String.valueOf(result.getSchool3()));
+			}
 			
-			String stFours = tvFours.getText().toString();
-			if(stFours.isEmpty() || stFours.contains("+")) tvFours.setText("+" + fours);
+			if (fours == UNPLAYED) {
+				tvFours.setText(String.valueOf(result.getSchool4()));
+			}
 			
-			String stFives = tvFives.getText().toString();
-			if(stFives.isEmpty() || stFives.contains("+")) tvFives.setText("+" + fives);
+			if (fives == UNPLAYED) {
+				tvFives.setText(String.valueOf(result.getSchool5()));
+			}
 			
-			String stSix = tvSix.getText().toString();
-			if(stSix.isEmpty() || stSix.contains("+")) tvSix.setText("+" + six);
+			if (six == UNPLAYED) {
+				tvSix.setText(String.valueOf(result.getSchool6()));
+			}
 			
-			String stPair = tvPair.getText().toString();
-			if(stPair.isEmpty() || stPair.contains("+")) tvPair.setText("+" + pair);
+			if (pair == UNPLAYED) {
+				tvPair.setText(String.valueOf(result.getPair() * bonus));
+			}
 			
-			String stTwoPair = tvTwoPair.getText().toString();
-			if(stTwoPair.isEmpty() || stTwoPair.contains("+")) tvTwoPair.setText("+" + twoPair);
+			if (twoPair == UNPLAYED) {
+				tvTwoPair.setText(String.valueOf(result.getDoublePair() * bonus));
+			}
 			
-			String stSet = tvSet.getText().toString();
-			if(stSet.isEmpty() || stSet.contains("+")) tvSet.setText("+" + set);
+			if (set == UNPLAYED) {
+				tvSet.setText(String.valueOf(result.getSet() * bonus));
+			}
 			
-			String stCare = tvCare.getText().toString();
-			if(stCare.isEmpty() || stCare.contains("+")) tvCare.setText("+" + care);
+			if (care == UNPLAYED) {
+				tvCare.setText(String.valueOf(result.getCare() * bonus));
+			}
 			
-			String stEvens = tvEvens.getText().toString();
-			if(stEvens.isEmpty() || stEvens.contains("+")) tvEvens.setText("+" + evens);
+			if (evens == UNPLAYED) {
+				tvEvens.setText(String.valueOf(result.getEvens() * bonus));
+			}
 			
-			String stOdds = tvOdds.getText().toString();
-			if(stOdds.isEmpty() || stOdds.contains("+")) tvOdds.setText("+" + odds);
+			if (odds == UNPLAYED) {
+				tvOdds.setText(String.valueOf(result.getOdds() * bonus));
+			}
 			
-			String stLittleStreet = tvLittleStreet.getText().toString();
-			if(stLittleStreet.isEmpty() || stLittleStreet.contains("+")) tvLittleStreet.setText("+" + littleStreet);
+			if (littleStreet == UNPLAYED) {
+				tvLittleStreet.setText(String.valueOf(result.getLittleStreet() * bonus));
+			}
 			
-			String stBigStreet = tvBigStreet.getText().toString();
-			if(stBigStreet.isEmpty() || stBigStreet.contains("+")) tvBigStreet.setText("+" + bigStreet);
+			if (bigStreet == UNPLAYED) {
+				tvBigStreet.setText(String.valueOf(result.getBigStreet() * bonus));
+			}
 			
-			String stMizzer = tvMizer.getText().toString();
-			if(stMizzer.isEmpty() || stMizzer.contains("+")) tvMizer.setText("+" + mizer);
+			if (mizer == UNPLAYED) {
+				tvMizer.setText(String.valueOf(result.getMizer() * bonus));
+			}
 			
-			String stSum = tvSum.getText().toString();
-			if(stSum.isEmpty() || stSum.contains("+")) tvSum.setText("+" + sum);
+			if (sum == UNPLAYED) {
+				tvSum.setText(String.valueOf(result.getSum() * bonus));
+			}
 			
-			String stFullHouse = tvFullHouse.getText().toString();
-			if(stFullHouse.isEmpty() || stFullHouse.contains("+")) tvFullHouse.setText("+" + fullHouse);
+			if (fullHouse == UNPLAYED) {
+				tvFullHouse.setText(String.valueOf(result.getFullHouse() * bonus));
+			}
 			
-			String stChance = tvChance.getText().toString();
-			if(stChance.isEmpty() || stChance.contains("+")) tvChance.setText("+" + chance);
+			if (chance == UNPLAYED) {
+				ChanceGame game = calculateChance(result);
+				
+                if (game == null) {
+                	Log.e(TAG, "Logic error in chance calc", new Throwable());
+                }
+                
+                result.setChance(game.getScore());
+				tvChance.setText(String.valueOf(game.getScore()));
+				Log.d(TAG, "set Chance value twxt to : " + game.getScore());
+			}
 			
-			String stPoker = tvPoker.getText().toString();
-			if(stPoker.isEmpty() || stPoker.contains("+")) tvPoker.setText("+" + poker);			
+			if (poker == UNPLAYED) {
+				tvPoker.setText(String.valueOf(result.getPoker() * bonus));
+			}	
 		} else {
-			String stAces = tvAces.getText().toString();
-			if(stAces.contains("+")) tvAces.setText("");
+			tvAces.setText((aces == UNPLAYED) ? "" : String.valueOf(aces));
+			tvTwos.setText((twos == UNPLAYED) ? "" : String.valueOf(twos));
+			tvThrees.setText((threes == UNPLAYED) ? "" : String.valueOf(threes));
+			tvFours.setText((fours == UNPLAYED) ? "" : String.valueOf(fours));
+			tvFives.setText((fives == UNPLAYED) ? "" : String.valueOf(fives));
+			tvSix.setText((six == UNPLAYED) ? "" : String.valueOf(six));
 			
-			String stTwos = tvTwos.getText().toString();
-			if(stTwos.contains("+")) tvTwos.setText("");
-			
-			String stThrees = tvThrees.getText().toString();
-			if(stThrees.contains("+")) tvThrees.setText("");
-			
-			String stFours = tvFours.getText().toString();
-			if(stFours.contains("+")) tvFours.setText("");
-			
-			String stFives = tvFives.getText().toString();
-			if(stFives.contains("+")) tvFives.setText("");
-			
-			String stSix = tvSix.getText().toString();
-			if(stSix.contains("+")) tvSix.setText("");
-			
-			String stPair = tvPair.getText().toString();
-			if(stPair.contains("+")) tvPair.setText("");
-			
-			String stTwoPair = tvTwoPair.getText().toString();
-			if(stTwoPair.contains("+")) tvTwoPair.setText("");
-			
-			String stSet = tvSet.getText().toString();
-			if(stSet.contains("+")) tvSet.setText("");
-			
-			String stCare = tvCare.getText().toString();
-			if(stCare.contains("+")) tvCare.setText("");
-			
-			String stEvens = tvEvens.getText().toString();
-			if(stEvens.contains("+")) tvEvens.setText("");
-			
-			String stOdds = tvOdds.getText().toString();
-			if(stOdds.contains("+")) tvOdds.setText("");
-			
-			String stLittleStreet = tvLittleStreet.getText().toString();
-			if(stLittleStreet.contains("+")) tvLittleStreet.setText("");
-			
-			String stBigStreet = tvBigStreet.getText().toString();
-			if(stBigStreet.contains("+")) tvBigStreet.setText("");
-			
-			String stMizzer = tvMizer.getText().toString();
-			if(stMizzer.contains("+")) tvMizer.setText("");
-			
-			String stSum = tvSum.getText().toString();
-			if(stSum.contains("+")) tvSum.setText("");
-			
-			String stFullHouse = tvFullHouse.getText().toString();
-			if(stFullHouse.contains("+")) tvFullHouse.setText("");
-			
-			String stChance = tvChance.getText().toString();
-			if(stChance.contains("+")) tvChance.setText("");
-			
-			String stPoker = tvPoker.getText().toString();
-			if(stPoker.contains("+")) tvPoker.setText("");
+			tvPair.setText((pair == UNPLAYED) ? "" : String.valueOf(pair));
+			tvTwoPair.setText((twoPair == UNPLAYED) ? "" : String.valueOf(twoPair));
+			tvSet.setText((set == UNPLAYED) ? "" : String.valueOf(set));
+			tvCare.setText((care == UNPLAYED) ? "" : String.valueOf(care));
+			tvEvens.setText((evens == UNPLAYED) ? "" : String.valueOf(evens));
+			tvOdds.setText((odds == UNPLAYED) ? "" : String.valueOf(odds));
+			tvLittleStreet.setText((littleStreet == UNPLAYED) ? "" : String.valueOf(littleStreet));
+			tvBigStreet.setText((bigStreet == UNPLAYED) ? "" : String.valueOf(bigStreet));
+			tvMizer.setText((mizer == UNPLAYED) ? "" : String.valueOf(mizer));
+			tvSum.setText((sum == UNPLAYED) ? "" : String.valueOf(sum));
+			tvFullHouse.setText((fullHouse == UNPLAYED) ? "" : String.valueOf(fullHouse));
+			tvChance.setText((chance == UNPLAYED) ? "" : String.valueOf(chance));
+			tvPoker.setText((poker == UNPLAYED) ? "" : String.valueOf(poker));
 		}
-		changeDrawable(tvAces, llAces);
-		changeDrawable(tvTwos, llTwos);
-		changeDrawable(tvThrees, llThrees);
-		changeDrawable(tvFours, llFours);
-		changeDrawable(tvFives, llFives);
-		changeDrawable(tvSix, llSix);
-		changeDrawable(tvPair, llPair);
-		changeDrawable(tvTwoPair, llTwoPair);
-		changeDrawable(tvSet, llSet);
-		changeDrawable(tvCare, llCare);
-		changeDrawable(tvEvens, llEvens);
-		changeDrawable(tvOdds, llOdds);
-		changeDrawable(tvLittleStreet, llLittleStreet);
-		changeDrawable(tvBigStreet, llBigStreet);
-		changeDrawable(tvMizer, llMizer);
-		changeDrawable(tvSum, llSum);
-		changeDrawable(tvFullHouse, llFullHouse);
-		changeDrawable(tvChance, llChance);
-		changeDrawable(tvPoker, llPoker);
+		
+		changeDrawable(tvAces, llAces, aces);
+		changeDrawable(tvTwos, llTwos, twos);
+		changeDrawable(tvThrees, llThrees, threes);
+		changeDrawable(tvFours, llFours, fours);
+		changeDrawable(tvFives, llFives, fives);
+		changeDrawable(tvSix, llSix, six);
+		changeDrawable(tvPair, llPair, pair);
+		changeDrawable(tvTwoPair, llTwoPair, twoPair);
+		changeDrawable(tvSet, llSet, set);
+		changeDrawable(tvCare, llCare, care);
+		changeDrawable(tvEvens, llEvens, evens);
+		changeDrawable(tvOdds, llOdds, odds);
+		changeDrawable(tvLittleStreet, llLittleStreet, littleStreet);
+		changeDrawable(tvBigStreet, llBigStreet, bigStreet);
+		changeDrawable(tvMizer, llMizer, mizer);
+		changeDrawable(tvSum, llSum, sum);
+		changeDrawable(tvFullHouse, llFullHouse, fullHouse);
+		changeDrawable(tvChance, llChance, chance);
+		changeDrawable(tvPoker, llPoker, poker);
 	}
 	
-	private void changeDrawable(TextView text, LinearLayout layout){
+	private void changeDrawable(TextView text, LinearLayout layout, int score){
 		if(isActive){
-			if(text.getText().toString().contains("+")){
-				layout.setBackgroundResource(R.drawable.feedback_red_cell);
+			if(score == UNPLAYED) {
+				layout.setBackgroundResource(R.drawable.feedback_red_cell);  // hint will be shown (to click)
 				text.setTextColor(mContext.getResources().getColor(R.color.beige));
 			} else {
-				layout.setBackgroundResource(R.color.beige);
+				layout.setBackgroundResource(R.color.beige);  // no hint
 				text.setTextColor(mContext.getResources().getColor(R.color.black));
 			}			
 		} else {
-			layout.setBackgroundResource(android.R.color.transparent);
+			layout.setBackgroundResource(android.R.color.transparent); // other players scores
 			text.setTextColor(mContext.getResources().getColor(R.color.black));
 		}
 	}
+	
+	private ChanceGame calculateChance(ResultManager r) {	
+		if (chance != UNPLAYED) {
+			return null; // TODO: think about the logic
+		}
+		
+		int score = 0;
+		String name = "";
+		
+		if (r.getPair() > score) {
+			score = r.getPair();
+			name = "pair";
+		}
+		
+		if (r.getDoublePair() > score) {
+			score = r.getDoublePair();
+			name = "double pair";
+		}
+		
+		if (r.getSet() > score) {
+			score = r.getSet();
+			name = "set";
+		}
+		
+		if (r.getCare() > score) {
+			score = r.getCare();
+			name = "care";
+		}
+		
+		if (r.getEvens() > score) {
+			score = r.getEvens();
+			name = "evens";
+		}
+		
+		if (r.getOdds() > score) {
+			score = r.getOdds();
+			name = "odds";
+		}
+		
+		if (r.getLittleStreet() > score) {
+			score = r.getLittleStreet();
+			name = "little Street";
+		}
+		
+		if (r.getBigStreet() > score) {
+			score = r.getBigStreet();
+			name = "big sxtreet";
+		}
+		
+		if (r.getMizer() > score) {
+			score = r.getMizer();
+			name = "mizer";
+		}
+		
+		if (r.getSum() > score) {
+			score = r.getSum();
+			name = "sum";
+		}
+		
+		if (r.getFullHouse() > score) {
+			score = r.getFullHouse();
+			name = "full House";
+		}
+		
+		if (r.getPoker() > score) {
+			score = r.getPoker();
+			name = "poker";
+		}
+		
+		ChanceGame game = new ChanceGame(score, name);
+		return game;
+	}
+	
+	// listeners
 	
 	@Override
 	public void onClick(View v) {
@@ -433,17 +517,101 @@ public class PlayerTable implements OnClickListener{
 		case R.id.llAces:
 			Toast.makeText(mContext, "Еденицы", Toast.LENGTH_SHORT).show();
 			mChoiceListener.onChoice(1, mPlayerIndex);
-//			tvAces.set
+			// tvAces.set
 			break;
+			
 		case R.id.llTwos:
 			Toast.makeText(mContext, "Двойки", Toast.LENGTH_SHORT).show();
 			mChoiceListener.onChoice(2, mPlayerIndex);
 			break;
+			
 		case R.id.llThrees:
 			Toast.makeText(mContext, "threes", Toast.LENGTH_SHORT).show();
 			mChoiceListener.onChoice(3, mPlayerIndex);
 			break;
 			
+		case R.id.llFours:
+			Toast.makeText(mContext, "fours", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(4, mPlayerIndex);
+			break;
+			
+		case R.id.llFives:
+			Toast.makeText(mContext, "Fives", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(5, mPlayerIndex);
+			break;
+			
+		case R.id.llSix:
+			Toast.makeText(mContext, "Sixes", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(6, mPlayerIndex);
+			break;
+			
+		case R.id.llPair:
+			Toast.makeText(mContext, "Pair", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(7, mPlayerIndex);
+			break;
+			
+		case R.id.llTwoPair:
+			Toast.makeText(mContext, "Two Pair", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(8, mPlayerIndex);
+			break;
+			
+		case R.id.llSet:
+			Toast.makeText(mContext, "Set", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(9, mPlayerIndex);
+			break;
+			
+		case R.id.llCare:
+			Toast.makeText(mContext, "Care", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(10, mPlayerIndex);
+			break;
+			
+		case R.id.llEvens:
+			Toast.makeText(mContext, "Sixes", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(11, mPlayerIndex);
+			break;
+			
+		case R.id.llOdds:
+			Toast.makeText(mContext, "Odds", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(12, mPlayerIndex);
+			break;
+			
+		case R.id.llLittleStreet:
+			Toast.makeText(mContext, "little Street", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(13, mPlayerIndex);
+			break;
+			
+		case R.id.llBigStreet:
+			Toast.makeText(mContext, "Big Street", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(14, mPlayerIndex);
+			break;
+			
+		case R.id.llMizer:
+			Toast.makeText(mContext, "Mizer", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(15, mPlayerIndex);
+			break;
+			
+		case R.id.llSum:
+			Toast.makeText(mContext, "Sum", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(16, mPlayerIndex);
+			break;
+			
+		case R.id.llFullHouse:
+			Toast.makeText(mContext, "FullHouse", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(17, mPlayerIndex);
+			break;
+			
+		case R.id.llChance:
+			Toast.makeText(mContext, "Chance", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(18, mPlayerIndex);
+			break;
+			
+		case R.id.llPoker:
+			Toast.makeText(mContext, "Poker", Toast.LENGTH_SHORT).show();
+			mChoiceListener.onChoice(19, mPlayerIndex);
+			break;
+
+		default:
+			break;
 		}
-	}	
+	}
 }

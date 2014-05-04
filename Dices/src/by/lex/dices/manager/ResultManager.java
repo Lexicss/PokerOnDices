@@ -32,6 +32,7 @@ public class ResultManager {
 	private int mMizer;
 	private int mSum;
 	private int mFullHouse;
+	private int mChance;
 	private int mPoker;
 
 	public static ResultManager getInstance() {
@@ -142,6 +143,14 @@ public class ResultManager {
 		return mFullHouse;
 	}
 
+	public int getChance() {
+		return mChance;
+	}
+	
+	public void setChance(int chance) {
+		mChance = chance;
+	}
+	
 	public int getPoker() {
 		return mPoker;
 	}

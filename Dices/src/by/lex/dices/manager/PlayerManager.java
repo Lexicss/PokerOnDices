@@ -1,11 +1,15 @@
 package by.lex.dices.manager;
 
-import by.lex.dices.entity.Player;
+import android.util.Log;
+import by.lex.dices.entity.PlayerTable;
+
+
 
 public class PlayerManager {
 	private final int MAX_LOOP = 19;
-	
-	private Player[] mPlayers;
+	private final String TAG = this.getClass().getSimpleName();	
+
+	private PlayerTable[] mPlayers;
 	private int mActivePlayerIndex;
 	private int mLoopNumber;
 	private boolean mIsStarted;
@@ -27,16 +31,18 @@ public class PlayerManager {
 		mIsStarted = false;
 	}
 	
-	public Player[] getPlayers() {
+	public PlayerTable[] getPlayers() {
 		return mPlayers;
 	}
-	public void setPlayers(Player[] players) {
+	
+	public void setPlayers(PlayerTable[] players) {
 		mPlayers = players;
 		mActivePlayerIndex = 0;
 		mLoopNumber = 1;
+		Log.d(TAG, "setPlayers: " + players.length);
 	}
 	
-	public Player getActivePlayer() {
+	public PlayerTable getActivePlayer() {
 		if (mActivePlayerIndex == -1) {
 			return null;
 		}
@@ -67,7 +73,7 @@ public class PlayerManager {
 		return mPlayers.length;
 	}
 	
-	public Player nextPlayer() {
+	public PlayerTable nextPlayer() {
 		mActivePlayerIndex++;
 		
 		if (mActivePlayerIndex >= getPlayersCount()) {
@@ -89,11 +95,15 @@ public class PlayerManager {
 	}
 	
 	public boolean start() {
+		Log.d(TAG, "start");
+		
 		if (mIsStarted) {
+			Log.w(TAG, "ALready started");
 			return false;
 		}
 		
 		if (mPlayers == null || mPlayers.length == 0) {
+			Log.e(TAG, "Failed to start, Players are not assigned");
 			return false;
 		}
 		

@@ -59,7 +59,7 @@ public class ThrowIndicatorView extends FrameLayout {
 	
 	public void nextThrow() {
 		mNumber++;
-		if(mNumber > 3)mNumber = 0;
+		if(mNumber > 3) mNumber = 1;
 		updateState();
 	}
 

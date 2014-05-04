@@ -1,5 +1,17 @@
 package by.lex.dices.entity;
 
+/**
+ * @author admin
+ * 
+ * Should be removed
+ */
+
+@Deprecated
+/**
+ * 
+ * @author admin
+ * Use PlayerTable instead
+ */
 public class Player {
 	public final static int UNPLAYED = -1000;
 	
@@ -45,13 +57,13 @@ public class Player {
 	public int getSchool2() {
 		return mSchool2;
 	}
-	public void setmSchool2(int school2) {
+	public void setSchool2(int school2) {
 		mSchool2 = school2;
 	}
 	public int getSchool3() {
 		return mSchool3;
 	}
-	public void setmSchool3(int school3) {
+	public void setSchool3(int school3) {
 		mSchool3 = school3;
 	}
 	public int getSchool4() {
